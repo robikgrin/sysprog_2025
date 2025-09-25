@@ -5,7 +5,7 @@
 С помощью `readelf` обнаружил, что надо менять `st_other` в `_Z12authenticatePKc` с `PROTECTED` на `DEFAULT`:
 
 ```console
-readelf -s libsecret.so | grep authenticate
+(base) robert@qot-calc0:~/sysprog_2025$ readelf -s libsecret.so | grep authenticate
  6: 0000000000001119    19 FUNC    GLOBAL PROTECTED   12 _Z12authenticatePKc
  24: 0000000000001119    19 FUNC    GLOBAL PROTECTED   12 _Z12authenticatePKc
 ```
@@ -27,3 +27,9 @@ Access GRANTED. Top secret = 462074591
 ```
 
 Получили пароль `Top secret = 462074591`. Для проверки все файлы лежат в `vzlom_password`.
+
+```console
+(base) robert@qot-calc0:~/sysprog_2025/vzlom_password$ readelf -s libsecret.so | grep authenticate
+     6: 0000000000001119    19 FUNC    GLOBAL DEFAULT   12 _Z12authenticatePKc
+    24: 0000000000001119    19 FUNC    GLOBAL PROTECTED   12 _Z12authenticatePKc
+```
