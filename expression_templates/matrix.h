@@ -26,7 +26,21 @@ public:
 	template<typename E>
 	Matrix(const Expression<E> &e)
 	{
-		// TODO
+		int source_x = e.getXsize();
+		int source_y = e.getYsize();
+
+		this->xsize = source_x;
+		this->ysize = source_y;
+
+		this->data.resize(source_x * source_y);
+		for (int i = 0; i < source_y; i++)
+		{ 
+			for (int j = 0; j < source_x; j++)
+			{
+				int k = i * source_x + j;
+				data[k] = e(i,j);
+			}
+		}
 	}
 
 	int getXsize() const noexcept { return xsize; }
@@ -42,7 +56,12 @@ public:
 	 */
 	double operator ()(int i, int j) const
 	{
-		// TODO
+		if (i < 0 || j < 0 || i >= ysize || j >= xsize){
+			throw Exception("Index out of bounds");
+		}
+
+		int k = i * xsize + j; // индекс вызываемого элемента
+		return data[k];
 	}
 
 	/**
@@ -55,7 +74,13 @@ public:
 	 */
 	double& operator ()(int i, int j)
 	{
-		// TODO
+		if (i < 0 || j < 0 || i >= ysize || j >= xsize){
+			throw Exception("Index out of bounds");
+		}
+
+		int k = i * xsize + j;
+
+		return data[k];
 	}
 
 private:

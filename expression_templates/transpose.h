@@ -10,14 +10,14 @@ template<typename E>
 class Transpose: public Expression<Transpose<E>>
 {
 public:
-	Transpose(const E& e); // TODO
+	Transpose(const E& e) : el(e) {}
 
-	int getXsize() const { /* TODO */ }
-	int getYsize() const { /* TODO */ }
+	int getXsize() const { return el.getYsize(); }
+	int getYsize() const { return el.getXsize(); }
 
 	double operator ()(int i, int j) const
 	{
-		// TODO
+		return el(j,i);
 	}
 
 	/**
@@ -27,11 +27,11 @@ public:
 	 */
 	const E& transpose() const noexcept
 	{
-		// TODO
+		return el;
 	}
 
 private:
-	// TODO
+	const E& el;
 };
 
 #endif // TRANSPOSE_H

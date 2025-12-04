@@ -20,7 +20,7 @@ public:
 	 */
 	double operator()(int i, int j) const
 	{
-		// TODO
+		return static_cast<const E&>(*this)(i, j);
 	}
 
 	/**
@@ -33,7 +33,7 @@ public:
 	 */
 	double& operator()(int i, int j)
 	{
-		// TODO
+		return static_cast<E&>(*this)(i, j);
 	}
 
 	/**
@@ -41,7 +41,8 @@ public:
 	 */
 	int getXsize() const noexcept
 	{
-		// TODO
+		// перекастовываемся в тип E, чтобы получить данные о размерах
+		return static_cast<const E&>(*this).getXsize();
 	}
 
 	/**
@@ -49,7 +50,7 @@ public:
 	 */
 	int getYsize() const noexcept
 	{
-		// TODO
+		return static_cast<const E&>(*this).getYsize();
 	}
 
 	/**
@@ -57,7 +58,7 @@ public:
 	 */
 	Transpose<E> transpose() const noexcept
 	{
-		// TODO
+		return Transpose<E>(static_cast<const E&>(*this));
 	}
 };
 
