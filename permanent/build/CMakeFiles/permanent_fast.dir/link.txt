@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -arch arm64 -bundle -Wl,-headerpad_max_install_names -L/Users/User/.brew/opt/llvm/lib -Xlinker -undefined -Xlinker dynamic_lookup -flto -o permanent_fast.cpython-312-darwin.so CMakeFiles/permanent_fast.dir/perm_fast.cpp.o

@@ -1,0 +1,3 @@
+/Users/User/Desktop/VS code/sysprog_2025/permanent/build/CMakeFiles/permanent_fast.dir
+/Users/User/Desktop/VS code/sysprog_2025/permanent/build/CMakeFiles/edit_cache.dir
+/Users/User/Desktop/VS code/sysprog_2025/permanent/build/CMakeFiles/rebuild_cache.dir
