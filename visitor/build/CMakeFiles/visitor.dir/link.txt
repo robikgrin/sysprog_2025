@@ -1,0 +1,1 @@
+/usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/Users/User/.brew/opt/llvm/lib CMakeFiles/visitor.dir/main.cpp.o CMakeFiles/visitor.dir/instructions.cpp.o CMakeFiles/visitor.dir/program.cpp.o CMakeFiles/visitor.dir/visitor.cpp.o -o visitor
