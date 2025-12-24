@@ -14,7 +14,14 @@ Program Optimizer::run(const Program &prog) {
     // Возвращаем результат
     return std::move(optimizedProgram);
 }
+/*
+Любая инструкция нулевой длительности исключается из оптимизированной последовательности.
+*/
 
+/*
+Если текущая и предыдущая инструкции - Disable, то объединить их в единую инструкцию Disable с суммарной длительностью. 
+Аналогично объединяются инструкции ConstFrequency с одинаковой частотой.
+*/
 void Optimizer::visit(const Disable &instr) {
     double d = instr.getDuration();
     if (d <= 1e-9) return; // Игнорируем нулевую длительность
@@ -32,6 +39,7 @@ void Optimizer::visit(const Disable &instr) {
     }
 }
 
+
 void Optimizer::visit(const ConstFrequency &instr) {
     double d = instr.getDuration();
     if (d <= 1e-9) return; 
@@ -47,7 +55,10 @@ void Optimizer::visit(const ConstFrequency &instr) {
 	lastDisable = nullptr;
 }
 
-
+/*
+Если в инструкции SweepFrequency начальная и конечная частота совпадает, 
+то заменить SweepFrequency на ConstFrequency.
+*/
 void Optimizer::visit(const SweepFrequency &instr) {
     double d = instr.getDuration();
     if (d <= 1e-9) return;
